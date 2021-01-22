@@ -1,0 +1,21 @@
+root=postmaster
+mailhub={{ ssmtp_mailhub }}
+hostname={{ ssmtp_hostname }}
+{% if (ssmtp_rewrite_domain is defined) and (ssmtp_rewrite_domain != "") %}
+rewriteDomain={{ ssmtp_rewrite_domain }}
+{% endif %}
+{% if ssmtp_from_line_override is sameas true %}
+FromLineOverride=YES
+{% endif %}
+{% if ssmtp_use_tls is sameas true %}
+UseTLS=YES
+{% endif %}
+{% if ssmtp_use_start_tls is sameas true %}
+UseSTARTTLS=YES
+{% endif %}
+{% for item in ssmtp_tls_certs %}
+{{ item.key }} = {{ item.value }}
+{% endfor %}
+{% for item in ssmtp_credentials %}
+{{ item.key }} = {{ item.value }}
+{% endfor %}

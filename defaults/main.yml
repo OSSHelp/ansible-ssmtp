@@ -1,0 +1,15 @@
+---
+ssmtp_setup: full
+
+ssmtp_packages:
+  - ssmtp
+  - mailutils
+
+ssmtp_hostname: "{{ inventory_hostname }}"
+ssmtp_mailhub: "mail-relay"
+ssmtp_rewrite_domain: ""
+ssmtp_from_line_override: false
+ssmtp_use_tls: false
+ssmtp_use_start_tls: false
+ssmtp_tls_certs: []
+ssmtp_credentials: []

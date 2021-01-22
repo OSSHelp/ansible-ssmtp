@@ -1,0 +1,8 @@
+---
+- name: install
+  include_tasks: install.yml
+  when: ssmtp_setup == "full" or ssmtp_setup == "install"
+
+- name: configure
+  import_tasks: configure.yml
+  when: ssmtp_setup == "full" or ssmtp_setup == "configure"
